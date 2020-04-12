@@ -8,18 +8,25 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 //run composer dump-autoload 
 
-class ShowCommand extends Command{
+class AddCommand extends Command{
+
+    private $database;
+
+    public function __construct(DatabaseAdapter $database)
+    {
+        $this->database = $database;
+
+        parent::__construct();
+    }
 
     
     public function configure(){
-        $this->setName("show")
-            ->setDescription("show all tasks");
+        $this->setName("add")
+            ->setDescription("Add new task");
     }
 
     public function execute(InputInterface $input, OutputInterface $output){
-        $this->showTasks($output);
+        
     }
-
-    
     
 }
