@@ -1,3 +1,4 @@
+.vscode
 ### Composer ###
 composer.phar
 /vendor/
