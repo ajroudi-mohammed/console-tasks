@@ -8,20 +8,20 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 //run composer dump-autoload 
 
-class AddCommand extends Command{
+class CompleteCommand extends Command{
 
     
     public function configure(){
-        $this->setName("add")
-            ->setDescription("Add new task")
-            ->addArgument('description', InputArgument::REQUIRED);
+        $this->setName("complete")
+            ->setDescription("Complete a task by it's ID")
+            ->addArgument('id', InputArgument::REQUIRED);
     }
 
     public function execute(InputInterface $input, OutputInterface $output){
-        $description = $input->getArgument('description');
-        $this->database->query('insert into tasks ("description") values(:description)', compact('description'));
+        $id = $input->getArgument('id');
+        $this->database->query('delete from tasks where id = :id', compact('id'));
 
-        $output->writeln('<info>Task added!</info>');
+        $output->writeln('<info>Task completed!</info>');
 
         $this->showTasks($output);
     }

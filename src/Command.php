@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Command extends SymfonyCommand{
 
-    private $database;
+    protected $database;
 
     public function __construct(DatabaseAdapter $database)
     {

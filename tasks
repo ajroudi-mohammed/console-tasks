@@ -2,6 +2,8 @@
 
 <?php
 
+use Acme\AddCommand;
+use Acme\CompleteCommand;
 use Acme\DatabaseAdapter;
 use Acme\ShowCommand;
 use Symfony\Component\Console\Application;
@@ -25,6 +27,7 @@ $dbAdapter = new DatabaseAdapter($pdo);
 
 $app->add(new ShowCommand($dbAdapter));
 $app->add(new AddCommand($dbAdapter));
+$app->add(new CompleteCommand($dbAdapter));
 
 $app->run();
 
